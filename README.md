@@ -11,7 +11,7 @@ A Random User API implementation made with Kotlin and Compose Multiplatform, Koi
 </p>
 
 <p align="center">
-<img src="assets/screenshot.png"/>
+<img src="assets/screenshot.jpg"/>
 </p>
 
 ## Download
