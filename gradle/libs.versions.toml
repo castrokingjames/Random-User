@@ -1,0 +1,74 @@
+[versions]
+agp = "8.5.1"
+kotlin = "2.0.20"
+compose-compiler = "1.6.7"
+compose-activity = "1.9.0"
+androidx-window = "1.3.0"
+compose = "1.7.0-alpha03"
+koin = "3.5.6"
+sqldelight = "2.0.2"
+decompose = "3.2.0-alpha04"
+essenty = "2.2.0-alpha04"
+kotlin-coroutine = "1.9.0-RC.2"
+kotlin-serialization = "1.7.1"
+ktor = "2.3.12"
+spotless = "6.25.0"
+
+[plugins]
+compose = { id = "org.jetbrains.compose", version.ref = "compose" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+
+sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+
+[libraries]
+compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "compose-activity" }
+androidx-window = { module = "androidx.window:window", version.ref = "androidx-window" }
+
+koin = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
+
+ktor-client = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ktor-client-okhttp = { group="io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-logging = { group="io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
+ktor-client-content-negotiation = { group="io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-json = { group="io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-client-mock = { group="io.ktor", name = "ktor-client-mock", version.ref = "ktor" }
+
+decompose = { group = "com.arkivanov.decompose", name = "decompose", version.ref = "decompose" }
+decompose-extensions = { group = "com.arkivanov.decompose", name = "extensions-compose", version.ref = "decompose" }
+essenty-lifecycle = { group = "com.arkivanov.essenty", name = "lifecycle", version.ref = "essenty" }
+essenty-statekeeper = { group = "com.arkivanov.essenty", name = "state-keeper", version.ref = "essenty" }
+essenty-instancekeeper = { group = "com.arkivanov.essenty", name = "instance-keeper", version.ref = "essenty" }
+essenty-backhandler = { group = "com.arkivanov.essenty", name = "back-handler", version.ref = "essenty" }
+essenty-lifecycle-coroutines = { group = "com.arkivanov.essenty", name = "lifecycle-coroutines", version.ref = "essenty" }
+
+sqldelight-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelight-jdbc = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
+sqldelight-extension = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
+
+kotlin-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlin-coroutine" }
+kotlin-coroutines-swing =  { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-swing", version.ref = "kotlin-coroutine" }
+kotlin-coroutines-android =  { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlin-coroutine" }
+kotlin-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlin-serialization" }
+kotlin-datetime = "org.jetbrains.kotlinx:kotlinx-datetime:0.4.1"
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+kotlin-coroutine-test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0"
+
+coil = "io.coil-kt.coil3:coil-compose:3.0.0-alpha10"
+coil-ktor = "io.coil-kt.coil3:coil-network-ktor2:3.0.0-alpha10"
+
+logback = "ch.qos.logback:logback-classic:1.5.7"
+
+mockk = "io.mockk:mockk:1.13.12"
+turbine = "app.cash.turbine:turbine:1.1.0"

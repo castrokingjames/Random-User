@@ -1,0 +1,32 @@
+*.iml
+.gradle
+.DS_Store
+build
+captures
+.externalNativeBuild
+.cxx
+local.properties
+release.jks
+xcuserdata
+/keys/
+/client/ios/Pods/
+/kotlin-js-store
+
+\.idea/caches/
+.idea/compiler.xml
+\.idea/
+/ajcore*.txt
+\build
+\generated
+
+# Idea
+**/.idea/*
+# Allow code styles and run configurations
+!**/.idea/codeStyles
+!**/.idea/runConfigurations
+!**/.idea/icon.svg
+!**/.idea/.name
+
+# Kotlin metadata
+.kotlin
+/.kotlin
