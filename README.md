@@ -11,7 +11,7 @@ A Random User API implementation made with Kotlin and Compose Multiplatform, Koi
 </p>
 
 <p align="center">
-<img src="https://github.com/castrokingjames/random-user/blob/gh-pages/assets/screenshot.jpg"/>
+<img src="https://raw.githubusercontent.com/castrokingjames/random-user/refs/heads/gh-pages/assets/screenshot.jpg"/>
 </p>
 
 ## Download
@@ -36,7 +36,7 @@ Go to the [Releases](https://github.com/castrokingjames/random-user/releases) to
 ## Architecture
 **Random User Compose** adheres to the MVVM architecture and implements the Repository pattern, aligning with [Google's official architecture guidance](https://developer.android.com/topic/architecture).
 
-![architecture](https://github.com/castrokingjames/random-user/blob/gh-pages/assets/figure0.png)
+![architecture](https://raw.githubusercontent.com/castrokingjames/random-user/refs/heads/gh-pages/assets/figure0.png)
 
 The architecture of **Random User Compose** is structured into two distinct layers: the UI layer and the data layer. Each layer fulfills specific roles and responsibilities, outlined as follows:
 
@@ -44,7 +44,7 @@ The architecture of **Random User Compose** is structured into two distinct laye
 
 ### Architecture Overview
 
-![architecture](https://github.com/castrokingjames/random-user/blob/gh-pages/assets/figure1.png)
+![architecture](https://raw.githubusercontent.com/castrokingjames/random-user/refs/heads/gh-pages/assets/figure1.png)
 
 - Each layer adheres to the principles of [unidirectional event/data flow](https://developer.android.com/topic/architecture/ui-layer#udf): the UI layer sends user events to the data layer, and the data layer provides data streams to other layers.
 - The data layer operates autonomously from other layers, maintaining purity without dependencies on external layers.
@@ -53,14 +53,14 @@ This loosely coupled architecture enhances component reusability and app scalabi
 
 ### UI Layer
 
-![architecture](https://github.com/castrokingjames/random-user/blob/gh-pages/assets/figure2.png)
+![architecture](https://raw.githubusercontent.com/castrokingjames/random-user/refs/heads/gh-pages/assets/figure2.png)
 
 The UI layer encompasses UI elements responsible for configuring screens for user interaction, alongside the [ViewModel/Component](https://arkivanov.github.io/Decompose/component/overview), which manages app states and restores data during configuration changes.
 - UI elements observe the data flow, ensuring synchronization with the underlying data layer.
 
 ### Data Layer
 
-![architecture](https://github.com/castrokingjames/random-user/blob/gh-pages/assets/figure3.png)
+![architecture](https://raw.githubusercontent.com/castrokingjames/random-user/refs/heads/gh-pages/assets/figure3.png)
 
 The data layer is composed of repositories that handle business logic tasks such as retrieving data from a local database or fetching remote data from a network. This layer is designed to prioritize offline access, functioning primarily as an offline-first repository of business logic. It adheres to the principle of "single source of truth," ensuring that all data operations are centralized and consistent.<br>
 
@@ -68,7 +68,7 @@ The data layer is composed of repositories that handle business logic tasks such
 
 ## Modularization
 
-![architecture](https://github.com/castrokingjames/random-user/blob/gh-pages/assets/figure4.png)
+![architecture](https://raw.githubusercontent.com/castrokingjames/random-user/refs/heads/gh-pages/assets/figure4.png)
 
 **Random User Compose** adopted modularization strategies below:
 
