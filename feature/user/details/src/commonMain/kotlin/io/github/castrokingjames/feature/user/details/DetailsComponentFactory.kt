@@ -17,11 +17,11 @@ package io.github.castrokingjames.feature.user.details
 
 import com.arkivanov.decompose.ComponentContext
 import io.github.castrokingjames.usecase.LoadAddressByUserIdCase
-import io.github.castrokingjames.usecase.LoadUserByUserIdCase
+import io.github.castrokingjames.usecase.LoadUserByUserIdUseCase
 import kotlin.coroutines.CoroutineContext
 
 class DetailsComponentFactory(
-  private val loadUserByUserId: LoadUserByUserIdCase,
+  private val loadUserByUserId: LoadUserByUserIdUseCase,
   private val loadAddressByUserId: LoadAddressByUserIdCase,
   private val coroutineContext: CoroutineContext,
 ) : DetailsComponent.Factory {

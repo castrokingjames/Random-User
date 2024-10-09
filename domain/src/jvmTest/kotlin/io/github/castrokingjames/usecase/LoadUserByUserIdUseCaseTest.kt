@@ -30,13 +30,13 @@ import org.junit.Test
 class LoadUserByUserIdUseCaseTest {
 
   private lateinit var userRepository: UserRepository
-  private lateinit var loadUserByUserId: LoadUserByUserIdCase
+  private lateinit var loadUserByUserId: LoadUserByUserIdUseCase
   private lateinit var users: List<User>
 
   @Before
   fun setup() {
     userRepository = mockk()
-    loadUserByUserId = LoadUserByUserIdCase(userRepository)
+    loadUserByUserId = LoadUserByUserIdUseCase(userRepository)
     users = generateUsers(100)
   }
 

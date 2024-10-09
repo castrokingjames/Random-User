@@ -13,19 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.castrokingjames.di
+package io.github.castrokingjames.usecase
 
-import io.github.castrokingjames.usecase.LoadAddressByUserIdCase
-import io.github.castrokingjames.usecase.LoadUserByUserIdUseCase
-import io.github.castrokingjames.usecase.LoadUsersBySizeUseCase
-import org.koin.core.module.dsl.factoryOf
-import org.koin.dsl.module
+import io.github.castrokingjames.model.User
+import io.github.castrokingjames.repository.UserRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.channelFlow
+import kotlinx.coroutines.flow.collectLatest
 
-val domainModule = module {
-
-  factoryOf(::LoadUsersBySizeUseCase)
-
-  factoryOf(::LoadUserByUserIdUseCase)
-
-  factoryOf(::LoadAddressByUserIdCase)
+class LoadUserByUserIdUseCase constructor(
+  private val userRepository: UserRepository,
+) {
+  operator fun invoke(userId: String): Flow<User> {
+    return channelFlow {
+      userRepository
+        .loadUserById(userId)
+        .collectLatest { user ->
+          send(user)
+        }
+    }
+  }
 }

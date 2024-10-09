@@ -18,7 +18,7 @@ package io.github.castrokingjames.feature.user.details
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
 import io.github.castrokingjames.usecase.LoadAddressByUserIdCase
-import io.github.castrokingjames.usecase.LoadUserByUserIdCase
+import io.github.castrokingjames.usecase.LoadUserByUserIdUseCase
 import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.Flow
@@ -31,7 +31,7 @@ import kotlinx.coroutines.flow.stateIn
 class DetailsViewModel constructor(
   private val userId: String,
   private val onBackClick: () -> Unit,
-  private val loadUserByUserId: LoadUserByUserIdCase,
+  private val loadUserByUserId: LoadUserByUserIdUseCase,
   private val loadAddressByUserId: LoadAddressByUserIdCase,
   private val componentContext: ComponentContext,
   private val coroutineContext: CoroutineContext,
