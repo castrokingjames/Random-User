@@ -44,4 +44,4 @@ include(":data")
 include(":model")
 include(":feature:user:list")
 include(":feature:user:details")
-
+include(":kover")

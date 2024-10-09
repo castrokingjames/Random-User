@@ -10,10 +10,12 @@ plugins {
     alias(libs.plugins.kotlin.parcelize) apply false
     alias(libs.plugins.sqldelight) apply false
     alias(libs.plugins.spotless) apply false
+    alias(libs.plugins.kover) apply false
 }
 
 subprojects {
     apply(plugin = "com.diffplug.spotless")
+    apply(plugin = "org.jetbrains.kotlinx.kover")
     configure<com.diffplug.gradle.spotless.SpotlessExtension> {
         kotlin {
             target("**/*.kt")
