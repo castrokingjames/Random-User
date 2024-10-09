@@ -38,6 +38,8 @@ android {
     properties
   }
 
+  val certificate = rootProject.file("release/release.jks")
+
   signingConfigs {
     getByName("debug") {
       storeFile = rootProject.file("release/debug.keystore")
@@ -47,8 +49,8 @@ android {
     }
 
     create("release") {
-      if (rootProject.file("release/release.jks").exists()) {
-        storeFile = rootProject.file("release/release.jks")
+      if (certificate.exists()) {
+        storeFile = certificate
         keyAlias = properties["KEY_ALIAS"]?.toString() ?: ""
         keyPassword = properties["KEY_PASSWORD"]?.toString() ?: ""
         storePassword = properties["STORE_PASSWORD"]?.toString() ?: ""
@@ -73,7 +75,11 @@ android {
     release {
       buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
 
-      signingConfig = signingConfigs.findByName("release") ?: signingConfigs["debug"]
+      signingConfig = if (certificate.exists()) {
+        signingConfigs["release"]
+      } else {
+        signingConfigs["debug"]
+      }
       isShrinkResources = true
       isMinifyEnabled = true
       proguardFiles(
