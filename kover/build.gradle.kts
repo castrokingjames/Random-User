@@ -17,6 +17,8 @@ kover.reports {
     excludes.classes(
       "io.github.castrokingjames.datasource.local.database.*",
       "*ComposableSingletons*",
+      "*lambda*",
+      "*inlined*",
     )
     excludes.annotatedBy(
       "kotlinx.serialization.Serializable",
