@@ -53,9 +53,6 @@ class ListViewModel constructor(
   private val scope = coroutineScope(coroutineContext + SupervisorJob())
 
   override val listUiState: StateFlow<ListComponent.ListUiState> = loadUsers()
-    .catch { e ->
-      emit(ListComponent.ListUiState.Error(e))
-    }
     .stateIn(
       scope,
       started = SharingStarted.WhileSubscribed(5000L),
