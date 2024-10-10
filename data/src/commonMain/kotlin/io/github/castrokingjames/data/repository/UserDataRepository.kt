@@ -49,51 +49,63 @@ class UserDataRepository constructor(
 
   override suspend fun loadUserById(userId: String): Flow<User> {
     return channelFlow {
-      usersQueries.selectByUserId(userId).asFlow().mapToOneOrNull(io).collectLatest { query ->
-        if (query == null) {
-          throw Exception("Can't find user with user id $userId")
-        } else {
-          val model = query.toModel()
-          send(model)
+      usersQueries
+        .selectByUserId(userId)
+        .asFlow()
+        .mapToOneOrNull(io)
+        .collectLatest { query ->
+          if (query == null) {
+            throw Exception("Can't find user with user id $userId")
+          } else {
+            val model = query.toModel()
+            send(model)
+          }
         }
-      }
     }
   }
 
   override suspend fun loadUsers(size: Int): Flow<List<User>> {
     return channelFlow {
-      userService.getUsers(size).onSuccess { response ->
-        val users = response.results
-        val size = users.size
-        if (size == 0) {
-          throw Exception("Empty results from API")
-        }
-
-        users.map { user ->
-          Pair(
-            user.users(),
-            user.address(),
-          )
-        }.forEachIndexed { index, pair ->
-          val user = pair.first
-          val address = pair.second
-          usersQueries.upsert(user)
-
-          val userResult = UserResult(index + 1L, user.id)
-          userResultQueries.upsert(userResult)
-          userAddressQueries.upsert(address)
-        }
-
-        usersQueries.selectByResult(size.toLong()).asFlow().mapToList(io).map { users ->
-          users.map { user ->
-            user.toModel()
+      userService
+        .getUsers(size)
+        .onSuccess { response ->
+          val users = response.results
+          val size = users.size
+          if (size == 0) {
+            throw Exception("Empty results from API")
           }
-        }.collectLatest { users ->
-          send(users)
+
+          users
+            .map { user ->
+              Pair(
+                user.users(),
+                user.address(),
+              )
+            }
+            .forEachIndexed { index, pair ->
+              val user = pair.first
+              val address = pair.second
+              usersQueries.upsert(user)
+
+              val userResult = UserResult(index + 1L, user.id)
+              userResultQueries.upsert(userResult)
+              userAddressQueries.upsert(address)
+            }
+
+          usersQueries
+            .selectByResult(size.toLong())
+            .asFlow()
+            .mapToList(io)
+            .map { users ->
+              users.map { user ->
+                user.toModel()
+              }
+            }.collectLatest { users ->
+              send(users)
+            }
+        }.onError { exception ->
+          throw exception
         }
-      }.onError { exception ->
-        throw exception
-      }
     }
   }
 }
